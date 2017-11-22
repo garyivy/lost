@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Terms</h1>
+  <p>
+      These terms and conditions ("Terms") govern your use of this entire website ("Website"). Your use of this website imply your
+      agreement. You are granted a limited license only, subject to the restrictions provided in these Terms, for purposes of
+      viewing the material contained on this Website.    
+  </p>
+  <h2>Restrictions</h2>
+  You are expressly restricted from all of the following:
+  <ol>
+
+    <li>
+      selling, sublicensing and/or otherwise commercializing any Website material;
+    </li>
+
+    <li>
+      using this Website in any way that is, or may be, damaging to this Website;
+    </li>
+    <li>
+      using this Website in any way that impacts user access to this Website;
+    </li>
+
+    <li>
+      engaging in any data mining, data harvesting, data extracting or any other similar activity in relation to this Website,
+      or while using this Website;
+    </li>
+  </ol>
+  <h2>No Warranties</h2>
+  <p>This Website is provided “as is,” with all faults, and makes no express or implied representations or warranties, of any
+    kind related to this Website or the materials contained on this Website.</p>
+  <hr />
+  <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="checkbox">
+          <input type="checkbox" id="chkAgree" formControlName="chkAgree" focus>
+          <label for="chkAgree">
+            <b>I have read and agree to Terms.</b>
+          </label>
+          <label *ngIf="error" class="error">{{ error }}</label>
+        </div>
+        <div class="text-center" style="margin-top: 10px">
+          <input class="btn btn-primary" type="submit" value="Continue">
+        </div>      
+  </form>
+</div>

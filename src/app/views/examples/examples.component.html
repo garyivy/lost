@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Examples</h1>
+  <ol>
+    <li *ngFor="let item of items; let i = index;">
+      <div>
+        <label [attr.for]="'  english-'+i">English</label>
+        <span [attr.id]="'english-'+i">{{ item.english}}</span>
+      </div>
+      <div>
+        <label [attr.for]="'chinese-'+i">Chinese</label>
+        <span [attr.id]="'chinese-'+i">{{ item.chinese}}</span>
+      </div>
+      <div>
+        <label [attr.for]="'echo-'+i">Echo</label>
+        <span [attr.id]="'echo-'+i">{{ item.echo}}</span>
+      </div>
+    </li>
+  </ol>
+</div>

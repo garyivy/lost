@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Welcome!</h1>
+  <p>
+    Thank you for visiting "Lost In Translation".
+  </p>
+  <p> 
+    This site demonstrates how language translation (especially computer-based translation) is challenging and at times funny.
+  </p>
+  <h2>Example</h2>
+  Using google translate, start with the following English phrase:
+  <blockquote>"You can lead a horse to water, but you <i>can't make him</i> drink"</blockquote> 
+  Translate it into Chinese:
+  <blockquote>你可以带马去喝水，但你不能让他喝酒</blockquote> 
+  Taking this translation and translating it back to english yields:
+  <blockquote>"You can take a horse to drink water, but you <i>can not let him</i> drink".</blockquote>
+  <h2>Try "Echo" Translation</h2>
+  <p>
+    To try a phrase for yourself, click on "Try".  
+  </p>
+  <p>
+    This takes you to a tool where enter you are prompted to enter an english phrase.
+    The tool will translate it into chinese.  
+    Then, it will translate that back into english as an "echo".
+    Often, it is very accurate.  But, sometimes, something gets "lost in translation".
+  </p>
+  <div class="text-center" style="margin-top: 30px">
+      <a *ngIf="isAuthorized$ | async" class="btn btn-primary" [routerLink]="['/echo']">Try</a>
+      <a *ngIf="!(isAuthorized$ | async)" class="btn btn-primary" [routerLink]="['/terms']">Try</a>
+    </div>
+</div>

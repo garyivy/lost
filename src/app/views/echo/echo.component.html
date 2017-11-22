@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>"Echo" Translation Tool</h1>
+  <p class="directions">
+    <b>Directions:</b> Enter a phrase in the box labeled "Original Phrase" and click "Echo Translate".
+  </p>
+  <p>
+    This tool will translate the phrase into the Chinese. Then, it will "echo" that back into English.
+  </p>
+  <div>
+    <form novalidate [formGroup]="form" (ngSubmit)="submit(form.value, form.valid)">
+      <div class="form-group">
+        <label for="phrase">
+          <h2>Original Phrase</h2>
+        </label>
+        <textarea id="phrase" class="form-control" formControlName="phrase" type="text" autofocus="autofocus"></textarea>
+        <label for="phrase" class="error" *ngIf="wasSubmitted && form.controls.phrase.invalid && form.controls.phrase.errors.required">
+          A phrase is required.
+        </label>
+      </div>
+      <div class="text-center" style="margin-top: 20px">
+        <input class="btn btn-primary" type="submit" value="Echo Translate" focus/>
+      </div>
+    </form>
+    <div *ngIf="echoTranslation" style="margin-top: 30px">
+      <h2>Translation Echo</h2>
+      {{ echoTranslation }}
+    </div>
+  </div>
+</div>

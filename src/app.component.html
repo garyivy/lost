@@ -8,16 +8,13 @@
         <li class="active">
           <a [routerLink]="['/home']">Home</a>
         </li>
-        <li *ngIf="isAuthorized$ | async">
+        <li>
           <a [routerLink]="['/echo']">Echo</a>
-        </li>
-        <li class="active">
-          <a [routerLink]="['/examples']">Examples</a>
         </li>
       </ul>
     </nav>
   </div>
 </header>
 <main>
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </main>

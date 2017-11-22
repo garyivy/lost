@@ -1,1 +1,277 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "node_modules/normalize-scss/sass/normalize/_import-now.scss";
+@import "./responsive.scss";
+
+$color-white: white;
+$color-green: #8ABF51;
+$color-blue: #13648F;
+
+$color-error: #DD0031;
+
+$color-header-background: $color-green;
+$color-header-text: $color-white;
+$color-navigation-background: $color-blue;
+$color-navigation-background-hover: lighten($color-navigation-background, 10%);
+$color-navigation-text: $color-white;
+$color-navigation-text-hover: $color-white;
+$color-navigation-seperator: $color-white;
+$color-button-primary: $color-blue;
+$color-button-primary-hover: lighten($color-button-primary, 10%);
+$color-blockquote: darken($color-green, 20%);
+
+$default-padding: 15px;
+$default-padding-double: 30px;
+/*
+$breakpoints: ( xs: 0, sm: 480px, md: 768px, lg: 992px, xl: 1199px);
+// xs - default
+@mixin screen-sm {
+    @media only screen and (min-width: 480px) {
+        @content;
+    }
+}
+
+@mixin screen-md {
+    @media only screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin screen-lg {
+    @media only screen and (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin screen-xl {
+    @media only screen and (min-width: 1199px) {
+        @content;
+    }
+}
+*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    display: block;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+h2, h3, h4, h5, h6 {
+    display: block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    margin-top: $default-padding-double;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: $default-padding;
+}
+h1 {
+    font-size: 1.45em;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+h3 {
+    font-size: 1.15em;
+}
+/*
+.container,
+.container-fluid {
+    width: calc(100%-$default-padding-double);
+    padding-right: $default-padding;
+    padding-left: $default-padding;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container {
+    @include screen-lg() {
+        width: 768px; 
+    }
+}
+*/
+blockquote {
+    color: $color-blockquote;
+    font-size: 1.2em;
+    i {
+        font-weight: 600;
+    } 
+}
+header {
+    color: $color-header-text;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0!important;
+    box-shadow:  0 1px 1px -.5px #dddddd;
+    div.heading-stripe {
+        background-color: $color-header-background;
+        div.heading {
+            color: $color-header-text;
+            font-size: 1.6em;
+            font-weight: 600;
+            b {
+                font-size: 1.2em;
+                font-weight: 900;
+            }
+        }
+    }
+    div.nav-stripe {
+        padding: 0;
+        background-color: $color-navigation-background;
+        nav {
+            &.container {
+                padding-left: 0;
+            }
+            ul {
+                display: table;
+                -webkit-margin-before: 0;
+                -webkit-margin-after: 0;
+                -webkit-margin-start: 0;
+                -webkit-margin-end: 0;
+                -webkit-padding-start: 0;
+                li {
+                    padding: 0;
+                    margin: 0;
+                    display: inline-block;
+                    list-style: none;
+                    text-align: center;
+                    @media (min-width: 992px) {
+                        border-left: 1px solid $color-navigation-seperator;                        
+                    }
+                    &:not(:first-child) {
+                        border-left: 1px solid $color-navigation-seperator;
+                    }
+                    &:last-child {
+                        border-right: 1px solid $color-navigation-seperator;
+                    }
+                    a {
+                        font-size: 1.1em;
+                        font-weight: 500;
+                        color: inherit;
+                        display: inline-block;
+                        height: 30px;
+                        line-height: 1.8em;
+                        min-width: 100px;
+                        text-decoration: none;
+                    }
+                    &:hover {
+                        background-color: $color-navigation-background-hover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+main {
+    margin-top: 100px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 1.1em;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: $color-button-primary;
+    border-color: darken($color-button-primary, 5%);
+
+    &:hover {
+        background-color: $color-button-primary-hover;
+        border-color: darken($color-button-primary-hover, 5%);      
+    }
+}
+
+a.btn {
+    text-decoration: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-group {
+    input {
+        width: 100%;
+    }
+
+    label {
+        display: block;
+
+        &.error {
+            color: $color-error !important;
+        }
+    }
+}
+
+.checkbox {
+    text-align: center;
+    label {
+        display: inline-block;
+        vertical-align: middle;
+        &.error {
+            display: block;
+            color:$color-error;
+        }
+    }
+    input {
+        vertical-align: middle;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        border: 2px solid black;
+    }
+}

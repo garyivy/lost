@@ -1,0 +1,38 @@
+$breakpoint-xs: 0;
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1199px;
+
+@mixin sm {
+    @media (min-width: $breakpoint-sm) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width: $breakpoint-md) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width: $breakpoint-lg) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+.container {
+    width: calc(100%-20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    @include lg() {
+        width: $breakpoint-lg;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
