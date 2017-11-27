@@ -1,9 +1,9 @@
 <div class="container">
   <h1>"Echo" Translation Tool</h1>
-  <p class="directions">
+  <p class="hidden-sm">
     <b>Directions:</b> Enter a phrase in the box labeled "Original Phrase" and click "Echo Translate".
   </p>
-  <p>
+  <p class="hidden-sm">
     This tool will translate the phrase into the Chinese. Then, it will "echo" that back into English.
   </p>
   <div>
@@ -12,13 +12,13 @@
         <label for="phrase">
           <h2>Original Phrase</h2>
         </label>
-        <textarea id="phrase" class="form-control" formControlName="phrase" type="text" autofocus="autofocus"></textarea>
+        <textarea id="phrase" class="form-control" formControlName="phrase" type="text" (keydown)="onKeydown($event)" autofocus="autofocus"></textarea>
         <label for="phrase" class="error" *ngIf="wasSubmitted && form.controls.phrase.invalid && form.controls.phrase.errors.required">
           A phrase is required.
         </label>
       </div>
       <div class="text-center" style="margin-top: 20px">
-        <input class="btn btn-primary" type="submit" value="Echo Translate" focus/>
+        <button class="btn btn-primary" type="submit" focus style="width: 180px">Echo Translate<app-spinner *ngIf="isBusy"></app-spinner></button>
       </div>
     </form>
     <div *ngIf="echoTranslation" style="margin-top: 30px">

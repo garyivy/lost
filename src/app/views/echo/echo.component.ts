@@ -10,6 +10,7 @@ import { EchoService } from './../../services/echo.service';
 export class EchoComponent implements OnInit {
   public form : FormGroup;
   public wasSubmitted: boolean; 
+  public isBusy: boolean = false;
   
   echoTranslation : string = null;
 
@@ -19,37 +20,30 @@ export class EchoComponent implements OnInit {
     this.form = new FormGroup({
       phrase: new FormControl('', [<any>Validators.required, 
         ]),
-    });    
+    }); 
   }
 
-  validatePhrase(group: FormGroup) {
-    /*
-    if(!this.wasSubmitted) {
-      return null;
+  onKeydown(event) {
+    // Override default behavior of text area for enter
+    if (event.key === "Enter") {
+      this.submit({ phrase: event.target.value }, true);
     }
-    */
-    let phraseControl = group.get('phrase');
-    let phraseToCheck = phraseControl != null
-      ? phraseControl.value || ''
-      : '';
-
-    return /^Gary+$/i.test( phraseToCheck) 
-      ? null
-      : { gary: 'You are not allowed to use the author\s name :)'};
-  }
+  }  
 
   submit(model: any, isValid: boolean) {
     this.wasSubmitted = true; 
     
-    if(isValid) {
+    if(isValid && !this.isBusy) {
+      this.isBusy = true;
       this.echoService.Translate(model.phrase)
         .then(result => {
           {
+            this.isBusy = false;
             this.echoTranslation = result.wasSuccessful
               ? result.data || null
               : null;
           }
-        })
+        }).catch( error => this.isBusy = false);
     }
   }
 }

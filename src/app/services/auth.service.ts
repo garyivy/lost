@@ -10,7 +10,8 @@ const FALSE = 'false';
 @Injectable()
 export class AuthService {
   private isAuthorizedSubject = new BehaviorSubject<boolean>(false); //https://stackoverflow.com/questions/39494058/behaviorsubject-vs-observable
-  public isAuthorized : Observable<boolean>;
+  public isAuthorized : Observable<boolean>;  
+  public hasAcceptedTerms : boolean;
 
   constructor() {
     if(environment.production) {
@@ -18,21 +19,23 @@ export class AuthService {
     }
 
     if(!environment.production) {
-      window.localStorage.removeItem(HAS_ACCEPTED_TERMS);       
+      //window.localStorage.removeItem(HAS_ACCEPTED_TERMS);       
     }
-
-    let hasAcceptedTerms = (window.localStorage.getItem(HAS_ACCEPTED_TERMS) || FALSE) === TRUE;
+    
+    this.hasAcceptedTerms = (window.localStorage.getItem(HAS_ACCEPTED_TERMS) || FALSE) === TRUE;
     this.isAuthorized = this.isAuthorizedSubject.asObservable();
-    this.isAuthorizedSubject.next(hasAcceptedTerms);
+    this.isAuthorizedSubject.next(this.hasAcceptedTerms);
   }
 
   recordTermsAcceptance() {
     window.localStorage.setItem(HAS_ACCEPTED_TERMS,TRUE);
     this.isAuthorizedSubject.next(true);
+    this.hasAcceptedTerms = true;
   }
 
   removeTermsAcceptance() {
     window.localStorage.removeItem(HAS_ACCEPTED_TERMS);
-    this.isAuthorizedSubject.next(false); 
+    this.isAuthorizedSubject.next(false);
+    this.hasAcceptedTerms = false;    
   }
 }

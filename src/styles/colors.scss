@@ -1,0 +1,48 @@
+// Name colors
+$color-white: white;
+$color-black: black;
+$color-green: #8ABF51;
+$color-blue: #13648F;
+$color-red: #DD0031;
+
+// Map scheme to colors
+$color-primary: $color-blue;
+$color-secondary: $color-green;
+$color-error: $color-red;
+.error {
+    color: $color-error !important;
+}
+
+// Apply scheme to elements
+h1 {
+    color: $color-secondary;
+}
+h2 {
+    color: $color-primary;
+}
+
+header {
+    color: $color-white;
+    .heading-stripe {
+        background-color: $color-secondary;        
+    }
+    .nav-stripe {
+        background-color: $color-primary;        
+    }
+
+}
+
+blockquote {
+    color: $color-secondary;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: $color-primary;
+    border-color: darken($color-primary, 5%);
+
+    &:hover {
+        background-color: lighten($color-primary, 5%);
+        border-color: $color-primary;     
+    }
+}

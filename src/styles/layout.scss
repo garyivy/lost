@@ -1,0 +1,168 @@
+$color-navigation-seperator: white;
+
+body {
+    display: block;
+    margin: 0;
+    font-family: $font-family-default;
+    font-size: $font-size-base;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    min-width: 300px;    
+    z-index: 1000;
+    top: 0!important;
+    box-shadow:  0 1px 1px -.5px #dddddd;
+    div.heading-stripe {
+        div.heading {
+            font-size: 1.6em;
+            font-weight: 600;
+            b {
+                font-size: 1.2em;
+                font-weight: 900;
+            }
+        }
+    }
+    div.nav-stripe {
+        padding: 0;
+        nav {            
+            &.container {
+                padding-left: 0;
+            }
+            ul {
+                display: table;
+                -webkit-margin-before: 0;
+                -webkit-margin-after: 0;
+                -webkit-margin-start: 0;
+                -webkit-margin-end: 0;
+                -webkit-padding-start: 0;
+                li {
+                    padding: 0;
+                    margin: 0;
+                    display: inline-block;
+                    list-style: none;
+                    text-align: center;
+                    
+                    @media (min-width: 992px) {
+                        border-left: 1px solid $color-navigation-seperator;                        
+                    }
+                    &:not(:first-child) {
+                        border-left: 1px solid $color-navigation-seperator;
+                    }
+                    &:last-child {
+                        border-right: 1px solid $color-navigation-seperator;
+                    }
+                    
+                    a {
+                        font-size: 1.1em;
+                        font-weight: 500;
+                        color: inherit;
+                        display: inline-block;
+                        height: 30px;
+                        line-height: 1.8em;
+                        min-width: 100px;
+                        text-decoration: none;
+                    }
+                    
+                    &:hover {
+                        background-color: lighten($color-primary, 5%);
+                    } 
+                }
+            }
+        }
+    }
+}
+
+main {
+    margin-top: 80px;
+}
+
+$default-padding: $spacing-default;
+$default-padding-double: $spacing-double;
+
+h1, h2, h3, h4, h5, h6 {
+    display: block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    margin-top: $default-padding;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: $default-padding;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 1.1em;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+
+a.btn {
+    text-decoration: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-group {
+    input {
+        width: 100%;
+    }
+
+    label {
+        display: block;
+    }
+}
+
+.checkbox {
+    text-align: center;
+    label {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    input {
+        vertical-align: middle;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        border: 2px solid black;
+    }
+}

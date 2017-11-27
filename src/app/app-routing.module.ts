@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LandingComponent } from './views/landing/landing.component';
 import { HomeComponent } from './views/home/home.component';
 import { EchoComponent } from './views/echo/echo.component';
 import { TermsComponent } from './views/terms/terms.component';
@@ -9,8 +10,12 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/landing',
     pathMatch: 'full'
+  },
+  {
+    path: 'landing',
+    component: LandingComponent
   },
   {
     path: 'home',

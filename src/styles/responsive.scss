@@ -1,8 +1,4 @@
-$breakpoint-xs: 0;
-$breakpoint-sm: 480px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1199px;
+@import './breakpoints.scss';
 
 @mixin sm {
     @media (min-width: $breakpoint-sm) {
@@ -25,8 +21,14 @@ $breakpoint-xl: 1199px;
     }
 }
 
+.hidden-sm {
+    display: none;
+    @media (min-width: $breakpoint-md) {
+        display: inherit;
+    }    
+}
+
 .container {
-    width: calc(100%-20px);
     margin-left: 10px;
     margin-right: 10px;
     @include lg() {

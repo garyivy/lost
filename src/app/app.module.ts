@@ -14,6 +14,8 @@ import { EchoComponent } from './views/echo/echo.component';
 import { HomeComponent } from './views/home/home.component';
 import { TermsComponent } from './views/terms/terms.component';
 import { ExamplesComponent } from './views/examples/examples.component';
+import { LandingComponent } from './views/landing/landing.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ExamplesComponent } from './views/examples/examples.component';
     EchoComponent,
     HomeComponent,
     TermsComponent,
-    ExamplesComponent
+    ExamplesComponent,
+    LandingComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
