@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EchoService } from './../../services/echo.service';
 
@@ -12,6 +12,9 @@ export class EchoComponent implements OnInit {
   public wasSubmitted: boolean; 
   public isBusy: boolean = false;
   
+  @ViewChild('submitButton')
+  submitButton: any;
+
   echoTranslation : string = null;
 
   constructor(private echoService: EchoService) { }
@@ -26,6 +29,7 @@ export class EchoComponent implements OnInit {
   onKeydown(event) {
     // Override default behavior of text area for enter
     if (event.key === "Enter") {
+      this.submitButton.nativeElement.focus();
       this.submit({ phrase: event.target.value }, true);
     }
   }  

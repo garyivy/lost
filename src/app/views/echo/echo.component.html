@@ -18,7 +18,7 @@
         </label>
       </div>
       <div class="text-center" style="margin-top: 20px">
-        <button class="btn btn-primary" type="submit" focus style="width: 180px">Echo Translate<app-spinner *ngIf="isBusy"></app-spinner></button>
+        <button #submitButton class="btn btn-primary" type="submit" focus style="width: 180px">Echo Translate<app-spinner *ngIf="isBusy"></app-spinner></button>
       </div>
     </form>
     <div *ngIf="echoTranslation" style="margin-top: 30px">
