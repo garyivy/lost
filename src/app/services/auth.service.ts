@@ -14,10 +14,6 @@ export class AuthService {
   public hasAcceptedTerms : boolean;
 
   constructor() {
-    if(environment.production) {
-      window.localStorage.setItem(HAS_ACCEPTED_TERMS,TRUE); // TODO: Remove
-    }
-
     if(!environment.production) {
       //window.localStorage.removeItem(HAS_ACCEPTED_TERMS);       
     }

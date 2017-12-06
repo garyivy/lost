@@ -1,4 +1,11 @@
-# Lost
+# Lost In Translation
+
+The published version of this site can be found at:
+https://d2xth3lxo7f541.cloudfront.net
+
+The site allows users to type in an English phrase and see how it is "echoed" back after translation from Chinese.
+
+This site was built to sample Angular.  The use cases for thie website were simple enough so as not to get bogged down with a lot of implementation.  But, the use case sufficiently demonstrate how to things like guarding routes, consuming a REST API, leveraging Observables, and writing unit tests.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
 
