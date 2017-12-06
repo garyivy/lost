@@ -47,7 +47,11 @@ export class EchoComponent implements OnInit {
               ? result.data || null
               : null;
           }
-        }).catch( error => this.isBusy = false);
+        }).catch( error => {
+          this.isBusy = false;
+          console.error(error);
+          this.echoTranslation = 'There was an error processing your request.'
+        });
     }
   }
 }

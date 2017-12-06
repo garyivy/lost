@@ -68,6 +68,11 @@ export class ExamplesComponent implements OnInit {
       chinese: '我可以踢我自己这样说。',
       echo: 'I can kick myself to say that.'
     },
+    { 
+      english: 'I still don\'t understand what makes him tick.',
+      chinese: '我还是不明白是什么让他打勾。',
+      echo: 'I still do not understand what ticked him.'
+    },
   ]
   constructor() { }
 

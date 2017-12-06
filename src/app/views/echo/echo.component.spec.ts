@@ -1,16 +1,15 @@
 import { async, ComponentFixture, TestBed,   } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EchoService, ApiResponse } from './../../services/echo.service';
+import { ApiResponse } from './../../services/api-response';
+import { EchoService } from './../../services/echo.service';
 import { EchoComponent } from './echo.component';
+import { SpinnerComponent } from './../../shared/spinner/spinner.component';
 
-class MockEchoService {
+// Create a mock instance of EchoService
+let mockEchoService = new class {
 	constructor() { }
-	public Translate(phrase: string): Promise<ApiResponse<any>> {
-		return new Promise<ApiResponse<any>>((resolve, reject) => {
-			resolve({ wasSuccessful: true, data: phrase });
-		});
-	}
+	Translate: (phrase: string) => Promise<ApiResponse<any>>;	
 }
 
 describe('EchoComponent', () => {
@@ -19,9 +18,9 @@ describe('EchoComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [ EchoComponent ],
+			declarations: [ EchoComponent, SpinnerComponent ],
 			imports: [ReactiveFormsModule],
-			providers: [ {provide: EchoService, useValue: new MockEchoService() } ]
+			providers: [ {provide: EchoService, useValue: mockEchoService } ] // Override Real Service
 		})
 		.compileComponents();
 	}));
@@ -35,10 +34,30 @@ describe('EchoComponent', () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('submit() should populate echoTranslation', () => { 
-		component.submit({phrase: 'Echo!'}, true);      
+	it('submit() should populate echoTranslation when EchoService.Translate is successful', () => {
+		mockEchoService.Translate = (phrase: string) => 
+			new Promise<ApiResponse<any>>((resolve, reject) => {
+				resolve({ wasSuccessful: true, data: phrase + ' Echoed' });
+			});
+
+		component.submit({phrase: 'Phrase'}, true);      
 		fixture.whenStable().then(() => { 
-			expect(component.echoTranslation).toEqual('Echo!');
+			expect(component.echoTranslation).toEqual('Phrase Echoed');
 		});
+	});  
+
+
+	it('submit() handles EchoService.Translate promise rejection', () => {
+		mockEchoService.Translate = (phrase: string) => 
+		new Promise<ApiResponse<any>>((resolve, reject) => {
+			reject(new Error('error'));
+		});
+
+		component.submit({phrase: 'Phrase'}, true);      
+		fixture.whenRenderingDone().then(() =>
+			fixture.whenStable().then(() => { 
+				expect(component.echoTranslation).toBe('There was an error processing your request.');
+			})	
+		);
 	});  
 });

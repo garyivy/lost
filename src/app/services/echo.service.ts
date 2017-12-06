@@ -7,7 +7,7 @@ import { ApiResponse } from './api-response';
 const AWS_PATH = 'https://3tf0oierhc.execute-api.us-east-1.amazonaws.com/dev/echo-translate?source=';
 
 @Injectable()
-export class EchoService {
+export class EchoService  {
 
   constructor(private http: Http) { }
 

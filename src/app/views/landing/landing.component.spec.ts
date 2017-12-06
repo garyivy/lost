@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from './../../services/auth.service';
+import { MockAuthService } from './../../services/mock-auth.service';
 import { LandingComponent } from './landing.component';
+
+let mockAuthService = new MockAuthService();
 
 describe('LandingComponent', () => {
   let component: LandingComponent;
@@ -8,7 +12,9 @@ describe('LandingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingComponent ]
+      declarations: [ LandingComponent ],
+      imports: [ RouterTestingModule ],
+      providers: [ { provide: AuthService, useValue: mockAuthService}]
     })
     .compileComponents();
   }));

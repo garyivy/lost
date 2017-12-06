@@ -10,13 +10,13 @@
   <div class="nav-stripe">
     <nav class="container">
       <ul>
-        <li class="active">
+        <li><!-- TODO Programmatically assign class of "active" -->
           <a [routerLink]="['/home']">Home</a>
         </li>
         <li *ngIf="isAuthorized$ | async">
           <a [routerLink]="['/echo']">Echo</a>
         </li>
-        <li class="active">
+        <li>
           <a [routerLink]="['/examples']">Examples</a>
         </li>
       </ul>
